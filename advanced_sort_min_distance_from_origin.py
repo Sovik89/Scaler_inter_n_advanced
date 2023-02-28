@@ -6,6 +6,14 @@ def solve(A,B):
     # @param B : integer
     # @return a list of list of integers
     
+    # Initially tried with Selection Sort till B iterations. Gives TLE error for Hard test case.
+
+
+    # Using python inbuilt sort function, sorting the array taking the distance from origin as key.
+    # return first B elements of the sorted array.
+    
+    #Better approach may be with heap sort
+    
     def my_compare(a,b):
         x1,y1=a[0],a[1]
         x2,y2=b[0],b[1]
