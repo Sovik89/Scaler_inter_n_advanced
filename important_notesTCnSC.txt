@@ -1,0 +1,158 @@
+Important notes and questions:-
+
+Problem solving:
+
+1. The sum of n natural numbers is :n(n+1)/2
+2. Find the number of times below code runs where N is a perfect square
+
+    for i -> 1 to N
+
+        if(i * i == N)
+
+    return i
+
+Ans: sqrt(n)
+
+3. How many elements are there between [135, 246] (inclusive of them)(b-a)+1 ?246-135=111+1=112
+
+4. What is the number of times we need to divide N by 2 till it reaches 1 ? floor(logn)
+
+
+Time Complexity:
+
+1. Sum of AP series:
+
+Sn=n/2[2a1+(n-1)d]
+
+2.a. Geometric Progression last number an= a*r^(n-1)
+
+Sum of 1st n terms in GP: a*(1-r^n)/(1-r)
+
+
+TIme Complexity exercise:
+
+1. What is the time complexity of the following code snippet
+
+for(int i = 1 ; i <= n ; i+=2){
+
+print(i);
+
+}
+Ans=>O(n)
+
+2. void solve(int N, int M){
+
+for(int i = 1 ; i <= N ; i++){
+if(N % i == 0)
+print(i);
+}
+
+for(int i = 1 ; i <= M ; i++){
+if(M % i == 0)
+print(i);
+}
+
+} 
+Ans=>O(n+m)
+
+3. int func(int n){
+
+int s = 0;
+
+for(int i = 1 ; i <= 100 ; i++){
+s = s + i;
+}
+
+return s;
+
+}
+Ans=>O(1)
+
+4. for(int i = 0 ; i < n ; i++){
+
+for(int j = 0 ; j <= i ; j++){
+
+print(i+j);
+
+}
+
+}
+
+Ans=>O(n^2)
+
+5. for(int i = 1 ; i <= n ; i*=2){
+
+for(int j = 1 ; j <= n ; j++){
+print(i + j);
+}
+
+}
+
+Ans=> O(nlogn)
+
+6. int a = 0, i = N; 
+while (i > 0) { 
+    a += i; 
+    i /= 2; 
+}
+
+Ans=>O(logn)
+
+7. int s = 0;
+
+for(int i = 0 ; i < n ; i = i * 2){
+
+s = s + i;
+
+}
+Ans: O(infinity)
+
+8. for(int i = 1 ; i*i*i <= n ; i++){
+
+s = s + i;
+
+}
+
+Ans:O(n^(1/3))
+
+9. for(int i = 1 ; i <= n ; i++){
+
+for(int j = 1 ; j <= 3^i ; j++){
+
+print(i + j);
+
+}
+
+}
+
+Ans:O(3^n)
+
+10. for(int i = 0 ; i <= n ; i++){
+
+    for(int j = 0; j <= 3 ^ i; j++){
+       print(j);
+    }
+}
+
+Ans: O(3^n)
+
+Note: Why the time complexity is O(3 ^ n) and not O (n * 3 ^ n)?
+Is it because O (3 ^ n) is a much larger value than O (n)?
+
+11. If for an algorithm time complexity is given by O(1) then complexityof it is:constant
+
+12. If for an algorithm time complexity is given by O(log2n) then complexity will:logarithmatic
+
+Note:Exponential notation is O(2^n), but that’s not the case here, it’s log(base2)n, which can be considered as logn, 
+        making it logarithmic and not exponential.
+
+13. If for an algorithm time complexity is given by O(n) then complexityof it is:linear
+
+14.  If for an algorithm time complexity is given by O((3/2)^n) then complexity will:exponential
+
+15. What is the time complexity for inserting/deleting at the beginning of the array?:O(N)
+
+16. The prefix sum formula for an array A of N integers is given by :-prefSum[i] = prefSum[i - 1] + A[i]
+
+17. What is the time complexity of creating the prefix sum array of an array A of N integers ? O(N)
+
