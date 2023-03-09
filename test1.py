@@ -1,23 +1,21 @@
-def romanToInt( s: str) -> int:
-        hash_map={'I':[0,1], 'V':[1,5],'X':[2,10],'L':[3,50],'C':[4,100],'D':[5,500],'M':[6,1000]}
-        
-        n=len(s)
-        out=0
-        original_index=hash_map[s[n-1]][0]
-        for i in range(n-1,-1,-1):
-            current_index=hash_map[s[i]][0]            
-            if current_index == original_index:
-                out+=hash_map[s[i]][1]
-            elif current_index<original_index:
-                out-=hash_map[s[i]][1]
-                original_index=hash_map[s[i]][0]
-            else:
-                out+=hash_map[s[i]][1]
-                original_index=hash_map[s[i]][0]
-                
-        return out
+def strStr(haystack: str, needle: str) -> int:
     
+    len_needle=len(needle)
+    len_haystack=len(haystack)
+    
+    i=0
+    gap=len_needle
+    while (len_haystack-i+1)>=len_needle:
+        print(haystack[i:gap])
+        if haystack[i:gap]==needle:
+            return i
+        i+=1
+        gap+=1
+        
+    return -1
 
-print(romanToInt("MCMXCIV"))
+
+#print(strStr("badbutsad","sad"))
+print(strStr("leetcode","leeto"))
             
             

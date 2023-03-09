@@ -1,29 +1,36 @@
 def solve(A,B,C):
-    output_list=[]
-    n=len(B)
+    n = len(A)
     
+    sum_1=0
+    sum_0=0
+    max_sum=0
     for i in range(n):
-        if B[i]==1:
-            output_list.append(A[i])
+        # We are taking the sum for A[i] where B[i]=1, This is always getiing added in sum_1 and sum_0 is getting
+        # added by A[i] where B[i] =0
+        # now we are taking a window of C when value of sum_0 with the B[i] for upcoming value where B[i] =0
+        sum_1+=(B[i]*A[i])
+        sum_0+=((1-B[i])*A[i])
+        if i >=C:
+            sum_0-=(1-B[i-C])*A[i-C]
+        max_sum=max(max_sum,sum_0)
             
-    A.sort(reverse=True)
-    B.sort(reverse=True)
-    
-    j=0
-    i=0
-    while j <=C:
-        if B[i]==0:
-            output_list.append(A[i])
-            j+=1
-        i+=1
-    
-    sum_val=0
-    
-    for i in range(len(output_list)):
-        sum_val+=output_list[i]
-    
+    return max_sum+sum_1
         
-    return sum_val        
+         
+    
+    
+    
+    
+ 
+ 
+# print(solve([1,4,2,8],[0,0,0,1],2)) 
+print(solve([2,1,4],[0,0,1],1))  
+
+
+# A=[1,4,2,8]
+# B=[0,0,0,1]
+
+# C=2       
             
         
             
