@@ -1,21 +1,27 @@
-def strStr(haystack: str, needle: str) -> int:
-    
-    len_needle=len(needle)
-    len_haystack=len(haystack)
-    
-    i=0
-    gap=len_needle
-    while (len_haystack-i+1)>=len_needle:
-        print(haystack[i:gap])
-        if haystack[i:gap]==needle:
-            return i
-        i+=1
-        gap+=1
+def compare(string1,string2):
+            value=''
+            min_len=min(len(string1),len(string2))
+
+            for i in range(min_len):              
+                
+                if string1[i]==string2[i]:
+                    value+=string1[i]#string append
+                else:
+                    break
+            return value
+
+def longestCommonPrefix(A):
+        longest_val=''
+        longest_val=A[0]
+        n=len(A)
         
-    return -1
+        for i in range(1,n):
+            temp = A[i]
+            longest_val = compare(longest_val,temp)
+        
+        return longest_val
 
 
-#print(strStr("badbutsad","sad"))
-print(strStr("leetcode","leeto"))
+print(longestCommonPrefix(["abcdefgh", "aefghijk", "abcefgh"]))
             
             
