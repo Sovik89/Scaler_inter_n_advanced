@@ -94,22 +94,75 @@ def reverse():
     
     #head=prev   
     #return head3
+def middle():
+        global head
+
+        if head == None:
+            return 0
+
+        slow=head
+        fast=head
+
+        count=1
+
+        while (fast.next is not None) and (fast.next.next is not None):
+            
+            count+=1
+            slow=slow.next
+            fast=fast.next.next
+        
+        if fast.next==None:
+            return slow.val
+
+        if fast.next.next==None:
+            return slow.next.val
+        
+
+def check_multiple(B):
+    global head
+    
+    cur = head
+    
+    while cur:
+        # check_val=B
+        # i=1
+        # while check_val<cur.val:
+        #     check_val=(B*i)
+        #     if check_val>=cur.val:
+        #         break
+        #     i+=1
+        # cur.val=check_val        
+        # cur=cur.next
+        
+        quotient=cur.val//B
+        reminder=cur.val%B
+        if reminder>0:
+            cur.val=(quotient+1)*B
+        else:
+            cur.val=(quotient)*B
+        cur=cur.next
+    
+        
+        
 
 
-insert_node(1,17)
-insert_node(2,4)
-insert_node(3,12)
-insert_node(4,10)
-insert_node(5,5)
+
+insert_node(1,13)
+insert_node(2,26)
+insert_node(3,39)
+insert_node(4,52)
+insert_node(5,65)
+insert_node(6,78)
 
 
 print_ll()
-reverse()
+#reverse()
+check_multiple(13)
 print_ll()
 
 #print_ll()
 
-
+#[ 14 -> 42 -> 98 -> 26 -> 36 -> 28 -> 57 -> 93 ]
 
 
     
