@@ -14,10 +14,8 @@ def evalRPN(A):
                 expression=first_val-second_val
             elif A[i]=="*":
                 expression=first_val*second_val
-            else:
-                
-                expression=first_val//second_val
-            
+            else:                
+                expression=first_val//second_val            
             stacks.append(str(expression))
         else:
             stacks.append(A[i])

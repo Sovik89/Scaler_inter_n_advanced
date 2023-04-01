@@ -1,37 +1,25 @@
-def isPalindrome(s):
+def reverseWords(s):
 
+        resultant_string=""
         n=len(s)
-        
-        string_alnum=""
-        string_source=""
+        p1=0
+        p2=0
+        while p2!=n:
+            
+            if s[p2]!=" ":
+                p2+=1
+            else:
+                temp=""
 
-        for i in range(n):
-            if s[i].isalpha():
-                string_alnum+=s[i]
-            elif s[i].isnumeric():
-                string_alnum+=s[i]
+                temp=s[p1:p2]
+                temp_rev=temp[::-1]
+                resultant_string+=(temp_rev+" ")
+                p1=p2+1
+                p2=p1
+        tmp=s[p1:p2]
+        resultant_string+=tmp[::-1]
 
-        n1=len(string_alnum)
+        return resultant_string
+    
 
-        if string_alnum=="":
-            return True
-        print(string_source)  
-        for i in range(n1):
-            if s[i].isalpha():
-                string_source+=string_alnum[i]
-        print(string_source)    
-        if string_source=="":
-            return False
-        val=string_source.lower()
-        print(val)   
-        reverse_string=val[::-1]
-        
-        print(reverse_string)
-
-        if reverse_string == val:
-            return True
-        else:
-            return False
-        
-
-print(isPalindrome("A man, a plan, a canal: Panama"))
+print(reverseWords("Let's take LeetCode contest"))
