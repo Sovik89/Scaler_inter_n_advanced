@@ -1,7 +1,9 @@
+from collections import deque
+
 def infixToPostfix(A):
     Priority = {'+':1, '-':1, '*':2, '/':2, '^':3} # dictionary having priorities of Operators 
 
-    stack = [] # initialization of empty stack
+    stack = deque() # initialization of empty stack
 
     output = '' 
 
