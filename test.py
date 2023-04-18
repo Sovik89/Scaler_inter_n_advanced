@@ -1,42 +1,30 @@
-def maxSubarray(A, B, C):
-    
-    if A==1:
-        return A[0]
-    
-    p1=0
-    p2=1
-    
-    sum_val=C[p1]
-    max_sum=0
-    while p2!=A :
-        
-        
-        if sum_val == B:
-            return sum_val
-        elif sum_val>B:
-            sum_val-=C[p1]
-            p1+=1
-            if sum_val<B:
-                max_sum=max(max_sum,sum_val)
-        
-        else:
-            sum_val+=C[p2]
-            p2+=1
-            if sum_val<B:
-                max_sum=max(max_sum,sum_val)
-    
-    if sum_val>B:
-        while sum_val>B:
-            sum_val-=C[p1]
-            p1+=1
-    max_sum=max(max_sum,sum_val)
-             
-        
-        
-    return max_sum
+def t2Sum( B):
+
+        list_val=[7,10,9,20]
+        #self.inorder(A,list_val)
+
+        n=len(list_val)
+
+        hash_map=dict()
+
+        for i in range(n):
+            hash_map[list_val[i]]=i
+            
+        for j in range(n):
+            val=B-list_val[j]
+            if val in hash_map:
+                if val*2!=B:
+                    return 1
 
 
-print(maxSubarray(5,12,[2,1,3,4,5]))
-#print(maxSubarray(4,11,[7, 10, 3, 1]))       
+        return 0
+    
+    
+    
+print(t2Sum(40))
+            
+            
+        
+
     
     
