@@ -1,25 +1,23 @@
-def reverseWords(s):
 
-        resultant_string=""
-        n=len(s)
-        p1=0
-        p2=0
-        while p2!=n:
-            
-            if s[p2]!=" ":
-                p2+=1
-            else:
-                temp=""
-
-                temp=s[p1:p2]
-                temp_rev=temp[::-1]
-                resultant_string+=(temp_rev+" ")
-                p1=p2+1
-                p2=p1
-        tmp=s[p1:p2]
-        resultant_string+=tmp[::-1]
-
-        return resultant_string
+class Solution:
     
+    def __init__(self):
+        self.max_val=float('-inf')    
+    
+    def max_value(self,root):
+        if not root:
+            return 0
+        
+        if root.val> self.max_val:
+            self.max_val=root.val
+            
+        self.max_value(root.left)
+        self.max_value(root.right)
+            
+    
+    
+    def solve(self, A):
+        self.max_value(A)
+        return self.max_val
+        
 
-print(reverseWords("Let's take LeetCode contest"))

@@ -8,39 +8,32 @@
 class Solution:
 	# @param A : root node of tree
 	# @return a list of integers
-	def recoverTree(self, A):
-        prev=None
-        first=None
-        second=None
+    def __init__(self):
+        self.prev=None
+        self.first=None
+        self.second=None
         
-        root=A
-
-        def inorder(root):
-            nonlocal prev,first,second
-            if root == None:
+    def inorder(self,root):
+        if not root:
+            return
+        self.inorder(root.left)
+        
+        if self.prev and self.prev.val>root.val:
+            if not self.first:
+                self.first=self.prev
+                self.second=root
+            else:
+                self.second=root
                 return
+        self.prev=root
+        self.inorder(root.right)
             
-            inorder(root.left)
-
-            if prev and prev.val>root.val:
-                if not first:
-                    first=prev
-                    second=root
-                else:
-                    second=root
-            
-                
-
-            prev=root
-
-            inorder(root.right)
+    # mother function    
+    def recoverTree(self, A):
+        self.inorder(A)
         
-        inorder(root)
-
-        
-
-        if not first:
+        if not self.first:
             return [-1,-1]
         else:
-            first,second=second,first
-            return [first.val,second.val]
+            self.first,self.second=self.second,self.first
+            return [self.first.val,self.second.val]

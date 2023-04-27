@@ -19,6 +19,6 @@ class Solution:
 
     # controlling function
     def isValidBST(self, A):
-        is_a_valid_bst=self.isBST(A,float('-inf'),float('inf'))
+        is_a_valid_bst=self.isBST(A,-1,float('inf'))#condt 0<=node val<=2^32-1
 
         return is_a_valid_bst

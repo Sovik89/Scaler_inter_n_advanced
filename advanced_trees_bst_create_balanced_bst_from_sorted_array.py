@@ -11,7 +11,7 @@ class Solution:
     
     def createBBST(self, A, s, e):
         if s>e:
-            return None
+            return
         
         mid=(s+e)//2
         
