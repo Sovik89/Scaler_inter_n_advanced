@@ -1,59 +1,41 @@
 import sys
+sys.setrecursionlimit(10**6)
+from collections import deque
 
-def solve( A):
-        def prefixSum(a1,b1,a2,b2,arr):
-            sums = 0
-            
-            if a1 != 0 and b1 != 0 :
-                sums=arr[a2][b2] - arr[a1-1][b2] - arr[a2][b1-1] + arr[a1-1][b1-1]
-            elif a1 == 0 and b1 != 0 :
-                sums=arr[a2][b2] - arr[a2][b1-1]
-            elif a1 != 0 and b1 == 0 :
-                sums=arr[a2][b2] - arr[a1-1][b2]
-            else :
-                sums=arr[a2][b2]
-            return sums
-        
-        n = len(A)
-        m = len(A[0])
-        #we create a new array where prefix sums are to be created
-        newA=[[0 for i in range(m)] for j in range(n)]
-        #print(newA)
-        
-        # prefix sum rowwise
-        for j in range(m) :
-            sums = 0
-            for i in range(n) :
-                sums += A[i][j]
-                newA[i][j] = sums
-                
-        # prefix sum column wise
-        for i in range(n) :
-            sums = 0
-            for j in range(m) :
-                sums += newA[i][j]
-                newA[i][j] = sums
-        
-        max_val=-sys.maxsize
-        
-        #print(newA)
-        
-        # calculate the prefix sum of each submatrix and find maximum of it
 
-        for i in range(n):
-            for j in range(m):
-                sum_val=prefixSum(i,j,n-1,m-1,newA)
-                max_val=max(max_val,sum_val)
-                
+def dfs(i,j,mat,length):
+        if mat[i][j]==0:
+            return length
 
-        return max_val
-    
-    
-        
-            
-    
-print(solve([[-42],[-41],[-37],[-29],[-23]]))
+        left=right=top=down=0
 
-# print(solve([[-8, 1, 1],
-# [-1, 6, 6],
-# [7, 10, 10]]))
+        if mat[i][j]:
+            if j-1>=0:
+                left=dfs(i,j-1,mat,length+1)
+            if i-1>=0:
+                top=dfs(i-1,j,mat,length+1)
+            if j+1<len(mat[0]):
+                right=dfs(i,j+1,mat,length+1)
+            if i+1<len(mat):
+                down=dfs(i+1,j,mat,length+1)
+
+        return min(left,right,top,down)
+
+def updateMatrix(mat):
+        row=len(mat)
+        col=len(mat[0])
+        op_mat=[[0]*col for _ in range(row)]
+        my_queue=deque()
+        for i in range(row):
+            for j in range(col):
+                if mat[i][j]!=0:
+                    my_queue.append([i,j])
+
+        while my_queue:
+            r,c=my_queue.popleft()
+            dist_0=dfs(r,c,mat,0)
+            op_matrix=dist_0
+
+        return op_matrix
+
+print(updateMatrix([[0,0,0],[0,1,0],[1,1,1]]))

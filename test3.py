@@ -1,9 +1,19 @@
-from functools import cmp_to_key
+hm_a=dict()
 
-array=[  [1, 2, 50],[3, 5, 20],[2, 100, 200],[6, 19, 100]  ]
+hm_a["a"]=2
+hm_a["b"]=3
+hm_a["c"]=4
 
 
-array=sorted(array,key=lambda x:x[1])
+hm_b=dict()
 
+hm_b["a"]=2
+hm_b["c"]=4
+hm_b["b"]=3
 
-print(array)
+if hm_a == hm_b:
+    print("Yes")
+    print(f"A:{hm_a} and B:{hm_b}")
+    
+else:
+    print("No")
